@@ -93,10 +93,10 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio in you
 Visit the live portfolio: [Your Portfolio URL]
 
 ## 🤝 Connect With Me
-LinkedIn: https://linkedin.com/in/ahmedtrying
-GitHub: https://github.com/AhmedTrying
-Medium: https://medium.com/@Ahmed_trying
-Email: ahmedmarwan.biz@gmail.com
+- **💼 LinkedIn:** [linkedin.com/in/ahmedtrying](https://linkedin.com/in/ahmedtrying)  
+- **💻 GitHub:** [github.com/AhmedTrying](https://github.com/AhmedTrying)  
+- **📝 Medium:** [medium.com/@Ahmed_trying](https://medium.com/@Ahmed_trying)  
+- **📧 Email:** [ahmedmarwan.biz@gmail.com](mailto:ahmedmarwan.biz@gmail.com)  
 
 ## 📄 License
 
