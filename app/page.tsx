@@ -1425,7 +1425,10 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
       </footer>
 
       {/* AI-Powered Chatbot */}
-      <Chatbot />
+      <Chatbot 
+        vectorShiftUrl="https://app.vectorshift.ai/chatbots/deployed/6895e9b7bb36832ed19ec40f" 
+        useIframe={true}
+      />
     </div>
   )
 }

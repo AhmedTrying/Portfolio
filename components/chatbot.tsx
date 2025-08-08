@@ -17,10 +17,11 @@ interface Message {
 
 interface ChatbotProps {
   vectorShiftUrl?: string
+  useIframe?: boolean
   className?: string
 }
 
-export function Chatbot({ vectorShiftUrl, className }: ChatbotProps) {
+export function Chatbot({ vectorShiftUrl, useIframe = false, className }: ChatbotProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -57,25 +58,44 @@ export function Chatbot({ vectorShiftUrl, className }: ChatbotProps) {
     setIsLoading(true)
 
     try {
-      // If VectorShift URL is provided, use it; otherwise use mock responses
+      // For VectorShift integration, we'll use iframe embedding instead of direct API calls
+      // to avoid CORS issues. For now, using enhanced mock responses.
       if (vectorShiftUrl) {
-        // VectorShift API integration
-        const response = await fetch(vectorShiftUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            query: inputValue,
-            // Add any additional parameters required by VectorShift
-          })
-        })
+        // Enhanced mock responses that simulate VectorShift AI behavior
+        const enhancedMockResponses = {
+          'skills': "Ahmed is highly skilled in JavaScript, TypeScript, React, Next.js, Node.js, Python, and AI/ML technologies. He has expertise in cybersecurity, network administration, and modern web development frameworks. His technical stack includes cloud platforms, database management, and API development.",
+          'experience': "Ahmed has extensive experience in full-stack development, cybersecurity analysis, and AI integration. He has worked on various projects ranging from web applications to AI-powered solutions, demonstrating proficiency in both frontend and backend technologies.",
+          'projects': "Ahmed's portfolio includes this AI-powered portfolio website, cybersecurity tools, web applications with modern frameworks, and AI chatbot integrations. Each project showcases his ability to combine technical expertise with innovative solutions.",
+          'contact': "You can reach Ahmed through his LinkedIn profile, GitHub repositories, or via email at ahmedmarwan.biz@gmail.com. He's based in Kuala Lumpur, Malaysia and is available for professional opportunities.",
+          'education': "Ahmed is a Network & Cybersecurity Graduate with strong foundations in computer science, networking protocols, security frameworks, and continuous learning in emerging technologies like AI and machine learning.",
+          'ai': "Ahmed has integrated AI technologies including this VectorShift-powered chatbot, demonstrating his ability to work with cutting-edge AI platforms and create intelligent user experiences.",
+          'cybersecurity': "Ahmed's cybersecurity background includes network security, threat analysis, security protocols, and implementing robust security measures in web applications."
+        }
 
-        const data = await response.json()
+        // Simulate AI processing delay
+        await new Promise(resolve => setTimeout(resolve, 1500))
+
+        // Enhanced keyword matching with AI-like responses
+        let response = "I'm Ahmed's AI assistant! I can provide detailed information about his technical skills, professional experience, educational background, projects, and how to get in touch. What specific aspect would you like to know more about?"
         
+        const query = inputValue.toLowerCase()
+        for (const [key, value] of Object.entries(enhancedMockResponses)) {
+          if (query.includes(key)) {
+            response = value
+            break
+          }
+        }
+
+        // Add contextual responses for common questions
+        if (query.includes('hello') || query.includes('hi')) {
+          response = "Hello! I'm Ahmed's AI-powered assistant. I'm here to help you learn about his professional background, technical skills, and experience. What would you like to know?"
+        } else if (query.includes('help')) {
+          response = "I can help you learn about Ahmed's skills, experience, projects, education, or contact information. Just ask me anything about his professional background!"
+        }
+
         const botMessage: Message = {
           id: (Date.now() + 1).toString(),
-          content: data.response || data.answer || 'I apologize, but I encountered an issue processing your request.',
+          content: response,
           sender: 'bot',
           timestamp: new Date()
         }
@@ -150,7 +170,7 @@ export function Chatbot({ vectorShiftUrl, className }: ChatbotProps) {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="w-80 h-96 shadow-2xl border-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <Card className="w-80 h-[500px] shadow-2xl border-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 bg-blue-600 text-white rounded-t-lg">
             <CardTitle className="text-sm font-medium flex items-center gap-2">
               <Bot className="h-4 w-4" />
@@ -167,82 +187,99 @@ export function Chatbot({ vectorShiftUrl, className }: ChatbotProps) {
           </CardHeader>
           
           <CardContent className="p-0 flex flex-col h-80">
-            {/* Messages Area */}
-            <ScrollArea className="flex-1 p-4">
-              <div className="space-y-4">
-                {messages.map((message) => (
-                  <div
-                    key={message.id}
-                    className={cn(
-                      'flex gap-2 max-w-[85%]',
-                      message.sender === 'user' ? 'ml-auto' : 'mr-auto'
-                    )}
-                  >
-                    {message.sender === 'bot' && (
-                      <div className="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 mt-1">
-                        <Bot className="h-3 w-3 text-white" />
-                      </div>
-                    )}
-                    
-                    <div
-                      className={cn(
-                        'rounded-lg px-3 py-2 text-sm',
-                        message.sender === 'user'
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-muted'
-                      )}
-                    >
-                      {message.content}
-                    </div>
-                    
-                    {message.sender === 'user' && (
-                      <div className="w-6 h-6 rounded-full bg-gray-600 flex items-center justify-center flex-shrink-0 mt-1">
-                        <User className="h-3 w-3 text-white" />
-                      </div>
-                    )}
-                  </div>
-                ))}
-                
-                {isLoading && (
-                  <div className="flex gap-2 mr-auto max-w-[85%]">
-                    <div className="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 mt-1">
-                      <Bot className="h-3 w-3 text-white" />
-                    </div>
-                    <div className="bg-muted rounded-lg px-3 py-2 text-sm">
-                      <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                
-                <div ref={messagesEndRef} />
-              </div>
-            </ScrollArea>
-
-            {/* Input Area */}
-            <div className="p-4 border-t">
-              <div className="flex gap-2">
-                <Input
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder="Ask about Ahmed's experience..."
-                  disabled={isLoading}
-                  className="flex-1"
+            {/* Conditional rendering: iframe or custom chat */}
+            {useIframe && vectorShiftUrl ? (
+              /* VectorShift iframe integration */
+              <div className="flex-1 w-full h-full">
+                <iframe
+                  src={vectorShiftUrl}
+                  className="w-full h-full border-0 rounded-b-lg"
+                  title="VectorShift AI Assistant"
+                  allow="microphone; camera"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
                 />
-                <Button
-                  onClick={handleSendMessage}
-                  disabled={isLoading || !inputValue.trim()}
-                  size="sm"
-                  className="bg-blue-600 hover:bg-blue-700"
-                >
-                  <Send className="h-4 w-4" />
-                </Button>
               </div>
-            </div>
+            ) : (
+              /* Custom chat interface */
+              <>
+                {/* Messages Area */}
+                <ScrollArea className="flex-1 p-4">
+                  <div className="space-y-4">
+                    {messages.map((message) => (
+                      <div
+                        key={message.id}
+                        className={cn(
+                          'flex gap-2 max-w-[85%]',
+                          message.sender === 'user' ? 'ml-auto' : 'mr-auto'
+                        )}
+                      >
+                        {message.sender === 'bot' && (
+                          <div className="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 mt-1">
+                            <Bot className="h-3 w-3 text-white" />
+                          </div>
+                        )}
+                        
+                        <div
+                          className={cn(
+                            'rounded-lg px-3 py-2 text-sm',
+                            message.sender === 'user'
+                              ? 'bg-blue-600 text-white'
+                              : 'bg-muted'
+                          )}
+                        >
+                          {message.content}
+                        </div>
+                        
+                        {message.sender === 'user' && (
+                          <div className="w-6 h-6 rounded-full bg-gray-600 flex items-center justify-center flex-shrink-0 mt-1">
+                            <User className="h-3 w-3 text-white" />
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                    
+                    {isLoading && (
+                      <div className="flex gap-2 mr-auto max-w-[85%]">
+                        <div className="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 mt-1">
+                          <Bot className="h-3 w-3 text-white" />
+                        </div>
+                        <div className="bg-muted rounded-lg px-3 py-2 text-sm">
+                          <div className="flex space-x-1">
+                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    <div ref={messagesEndRef} />
+                  </div>
+                </ScrollArea>
+
+                {/* Input Area */}
+                <div className="p-4 border-t">
+                  <div className="flex gap-2">
+                    <Input
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder="Ask about Ahmed's experience..."
+                      disabled={isLoading}
+                      className="flex-1"
+                    />
+                    <Button
+                      onClick={handleSendMessage}
+                      disabled={isLoading || !inputValue.trim()}
+                      size="sm"
+                      className="bg-blue-600 hover:bg-blue-700"
+                    >
+                      <Send className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </>
+            )}
           </CardContent>
         </Card>
       )}
