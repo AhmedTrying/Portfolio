@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { MapPin, Mail, Phone, Linkedin, Github, BookOpen, Briefcase, Code, Shield, Network, Award, ExternalLink, Menu, X, Eye, Calendar, Users, ShoppingCart, BarChart3, Smartphone, Database, Globe, Download, Brain, Moon, Sun } from 'lucide-react'
+import { Chatbot } from '@/components/chatbot'
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('home')
@@ -1422,6 +1423,9 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
           <p>&copy; 2025 Ahmed Marwan Ali. All rights reserved.</p>
         </div>
       </footer>
+
+      {/* AI-Powered Chatbot */}
+      <Chatbot />
     </div>
   )
 }
