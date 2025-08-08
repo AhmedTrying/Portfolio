@@ -14,6 +14,7 @@ This is a modern, responsive portfolio website built with Next.js and TypeScript
 
 ## ✨ Key Features
 
+- **AI-Powered Chatbot** - Interactive AI assistant powered by VectorShift for real-time visitor engagement
 - **Responsive Design** - Optimized for all device sizes (mobile, tablet, desktop)
 - **Dark/Light Mode** - Toggle between themes for better user experience
 - **Interactive UI** - Smooth animations and modern design elements
@@ -27,6 +28,7 @@ This is a modern, responsive portfolio website built with Next.js and TypeScript
 - **Frontend Framework:** Next.js 14 with TypeScript
 - **Styling:** Tailwind CSS with custom components
 - **UI Components:** Shadcn/ui component library
+- **AI Integration:** VectorShift chatbot with iframe embedding
 - **Icons:** Lucide React icons
 - **Deployment:** Vercel (production-ready)
 - **Version Control:** Git with GitHub integration
@@ -39,6 +41,24 @@ This is a modern, responsive portfolio website built with Next.js and TypeScript
 4. **Projects** - Showcase of my best work with detailed descriptions
 5. **Experience** - Professional work history and achievements
 6. **Contact** - Multiple ways to reach out for opportunities
+7. **AI Chatbot** - Interactive assistant for visitor engagement and inquiries
+
+## 🤖 AI-Powered Portfolio Website
+
+This portfolio features an **intelligent AI chatbot** that enhances visitor experience through:
+
+### Chatbot Features
+- **Real-time Interaction** - Instant responses to visitor questions about my experience and projects
+- **VectorShift Integration** - Powered by advanced AI technology for natural conversations
+- **Professional Assistance** - Helps visitors navigate the portfolio and find relevant information
+- **24/7 Availability** - Always ready to engage with potential employers and collaborators
+- **Smart Responses** - Contextual answers about skills, projects, and professional background
+
+### Technical Implementation
+- **iframe Embedding** - Secure integration with VectorShift platform
+- **Responsive Design** - Optimized chatbot interface for all devices
+- **Fallback System** - Enhanced mock responses ensure functionality even offline
+- **Modern UI** - Clean, professional chat interface matching portfolio aesthetics
 
 ## 🚀 Getting Started
 
