@@ -892,7 +892,7 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
                 <CardDescription>Al-Noor School, Jeddah, Saudi Arabia • Jul 2017 – Apr 2019</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>CGPA: 89.70</p>
+                <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Completed high school education with strong academic performance.</p>
               </CardContent>
             </Card>
           </div>
