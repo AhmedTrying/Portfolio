@@ -477,7 +477,7 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
             <div className={`flex flex-wrap justify-center gap-4 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
               <div className="flex items-center gap-2">
                 <MapPin size={18} />
-                <span>Kuala Lumpur, Malaysia</span>
+                <span>Riyadh, Saudi Arabia</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={18} />
@@ -485,7 +485,7 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={18} />
-                <span>+60 113 970 0557</span>
+                <span>+966543374674</span>
               </div>
             </div>
 
@@ -878,9 +878,11 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
                 </div>
                 
                 <div className="mt-6">
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                    <Download size={16} className="mr-2" />
-                    Download Academic Transcript
+                  <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
+                    <a href="/Ahmed Marwan_ Transcript - UTM.pdf" download="Ahmed_Marwan_Academic_Transcript.pdf">
+                      <Download size={16} className="mr-2" />
+                      Download Academic Transcript
+                    </a>
                   </Button>
                 </div>
               </CardContent>
@@ -1384,12 +1386,12 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
               <div className="flex flex-col items-center">
                 <Phone className="text-blue-400 mb-4" size={32} />
                 <h3 className="text-lg font-semibold mb-2">Phone</h3>
-                <p className="text-slate-300">+60 113 970 0557</p>
+                <p className="text-slate-300">+966543374674</p>
               </div>
               <div className="flex flex-col items-center">
                 <MapPin className="text-blue-400 mb-4" size={32} />
                 <h3 className="text-lg font-semibold mb-2">Location</h3>
-                <p className="text-slate-300">Kuala Lumpur, Malaysia</p>
+                <p className="text-slate-300">Riyadh, Saudi Arabia</p>
               </div>
             </div>
 
