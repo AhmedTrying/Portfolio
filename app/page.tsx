@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -28,7 +29,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'experience', 'education', 'projects', 'articles', 'certifications', 'contact']
+      const sections = ['home', 'about', 'skills', 'experience', 'education', 'projects', 'articles', 'certifications', 'recommendations', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -58,10 +59,102 @@ export default function Portfolio() {
     { id: 'projects', label: 'Projects' },
     { id: 'articles', label: 'Articles' },
     { id: 'certifications', label: 'Certifications' },
+    { id: 'recommendations', label: 'Recommendations' },
     { id: 'contact', label: 'Contact' }
   ]
 
   const projects = [
+  {
+    id: 'aegis-grc',
+    title: 'Aegis GRC Guard — Governance, Risk & Compliance SaaS',
+    subtitle: 'Multi-tenant GRC platform with Supabase & Postgres',
+    problem: 'Organizations lack centralized, audit-ready GRC workflows with strict tenant isolation.',
+    impact: 'Centralizes risks, controls, policies, evidence, tasks, and reports with RLS-enforced org isolation.',
+    myContribution: 'Designed multi-tenant architecture, implemented RLS boundaries, role-based UI enforcement, and core GRC workflows.',
+    technologies: ['React', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'shadcn/ui'],
+    image: '/aegis-grc.vercel.app_(Nest Hub Max).png',
+    isFlagship: true,
+    links: {
+      live: null,
+      code: 'https://github.com/AhmedTrying/Aegis-GRC',
+      caseStudy: true
+    },
+    details: {
+      overview: 'Modern, multi-tenant GRC SaaS that centralizes risk, compliance, policies, evidence, tasks, and reports with audit-ready workflows.',
+      problem: 'Enterprises struggle to manage GRC operations across departments and tenants without strong isolation and review workflows.',
+      approach: 'Implemented org-scoped data model with Supabase RLS, role-based UI (Admin/Manager/Viewer/Owner), and structured testing and approvals.',
+      result: 'Efficient tenant isolation, consistent governance workflows, and export-ready reporting across dashboards.',
+      lessons: 'RLS design and segregation of duties are critical for trustworthy GRC systems; UI must strictly enforce permissions.',
+      features: [
+        'Risk management with acceptance workflow and audit trail',
+        'Compliance controls with evidence, testing, and exceptions',
+        'Policies with versions, approvals, and attestation campaigns',
+        'Tasks and findings linked to risks/controls/policies',
+        'Reports with dashboards and CSV/PDF exports'
+      ],
+      technologies: [
+        'React 18',
+        'TypeScript',
+        'Supabase (Auth, Postgres, Storage)',
+        'Tailwind CSS',
+        'shadcn UI'
+      ],
+      architecture: [
+        'Frontend: React 18 + Tailwind + shadcn UI',
+        'Data: Supabase Postgres with Row-Level Security (RLS)',
+        'Auth: Supabase with org-scoped providers',
+        'Tooling: ESLint, TypeScript, PostCSS'
+      ],
+      challenges: 'Maintaining strict org isolation, SoD enforcement, and scalable performance for dashboards and listings.',
+      outcome: 'Audit-ready GRC platform with strong tenant boundaries and role-based enforcement.',
+      github: 'https://github.com/AhmedTrying/Aegis-GRC'
+    }
+  },
+  {
+    id: 'rishtea',
+    title: 'RishTea Café Ordering Platform',
+    subtitle: 'Next.js + Supabase Admin & Customer Experience',
+    problem: 'Cafés need a modern ordering flow with centralized admin control and reliable data backend.',
+    impact: 'Delivers streamlined customer ordering and full-featured admin dashboards with real-time data.',
+    myContribution: 'Implemented Next.js application structure, admin dashboards, Supabase integration, and responsive UI.',
+    technologies: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
+    image: '/rishtea-admin-tax-settings.png',
+    isFlagship: true,
+    links: {
+      live: null,
+      code: 'https://github.com/AhmedTrying/RishTea.git',
+      caseStudy: true
+    },
+    details: {
+      overview: 'A café ordering platform with a polished customer experience and comprehensive admin dashboards backed by Supabase.',
+      problem: 'Legacy ordering systems lack unified dashboards and scalable data layers, causing operational inefficiencies and limited insights.',
+      approach: 'Built a Next.js app with Supabase for auth and data, designed responsive customer views, and implemented admin dashboards for orders, products, and tax settings.',
+      result: 'Reduced manual processes via centralized management, improved decision-making through dashboards, and established a production-ready architecture.',
+      lessons: 'Well-structured UI systems and a consistent design language improve usability. Supabase’s simple auth and storage streamline full-stack development.',
+      features: [
+        'Customer menu and ordering flow',
+        'Admin dashboards with KPIs',
+        'Orders and products management',
+        'Tax rules configuration',
+        'Responsive layouts for all devices'
+      ],
+      technologies: [
+        'Next.js',
+        'TypeScript',
+        'Supabase',
+        'Tailwind CSS'
+      ],
+      architecture: [
+        'Frontend: Next.js with TypeScript',
+        'Backend: Supabase REST and Realtime',
+        'Styling: Tailwind CSS with component primitives',
+        'Data: Postgres via Supabase'
+      ],
+      challenges: 'Designing cohesive admin UX while ensuring scalable data operations and responsive performance across devices.',
+      outcome: 'A maintainable, scalable café platform ready for deployment and further customization.',
+      github: 'https://github.com/AhmedTrying/RishTea.git'
+    }
+  },
   {
     id: 'tomm-danny',
     title: 'Tomm&Danny Coffee Shop',
@@ -159,7 +252,7 @@ export default function Portfolio() {
     myContribution: 'Designed complete network topology, configured VLANs and ACLs, implemented routing protocols, and established security policies.',
     technologies: ['Cisco Packet Tracer', 'VLAN', 'ACLs', 'Routing', 'Network Security'],
     image: '/University Network Infrastructure.png',
-    isFlagship: true,
+    isFlagship: false,
     links: {
       live: null,
       code: 'https://github.com/AhmedTrying/University-Network-Infrastructure-Enhancement.git',
@@ -338,6 +431,36 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
 }
   ]
 
+  const recommendationLetters: { title: string; issuer: string; date: string; viewUrl: string; downloadUrl: string; summary: string }[] = [
+    {
+      title: 'Recommendation Letter – Faculty of Computing, UTM (Academic Advisor)',
+      issuer: 'Faculty of Computing, Universiti Teknologi Malaysia',
+      date: '2025-11-14',
+      viewUrl: 'https://drive.google.com/file/d/1ou-abUBLjQ7GR1p3qgkuJ61lXPe5GFqm/view?usp=sharing',
+      downloadUrl: 'https://drive.google.com/uc?export=download&id=1ou-abUBLjQ7GR1p3qgkuJ61lXPe5GFqm',
+      summary:
+        'Highlights academic progress, responsibility, and strengths in computer networks, cybersecurity, programming, and data analytics.'
+    },
+    {
+      title: 'Recommendation Letter – Magnifi Machines (DOC Internship Supervisor)',
+      issuer: 'Magnifi Machines Sdn. Bhd.',
+      date: '2025-02-18',
+      viewUrl: 'https://drive.google.com/file/d/1SwaP_WOUGwcsvgVq4nBnKtRXwCAu_7jK/view?usp=sharing',
+      downloadUrl: 'https://drive.google.com/uc?export=download&id=1SwaP_WOUGwcsvgVq4nBnKtRXwCAu_7jK',
+      summary:
+        'Covers hands-on experience with Fortinet firewalls, Virtual Access routers, IPSec VPNs, SD-WAN, Linux, uptime monitoring, and professionalism.'
+    },
+    {
+      title: 'Recommendation Letter – Final Year Project Supervisor, UTM',
+      issuer: 'Faculty of Computing, Universiti Teknologi Malaysia',
+      date: '2025-11-11',
+      viewUrl: 'https://drive.google.com/file/d/14zOzIyEIzXfNe2LKU5xsNcgFgdidERgD/view?usp=sharing',
+      downloadUrl: 'https://drive.google.com/uc?export=download&id=14zOzIyEIzXfNe2LKU5xsNcgFgdidERgD',
+      summary:
+        'Emphasizes AI-driven project work, problem-solving, research ability, clear communication, and delivery of high-quality technical results.'
+    }
+  ]
+
   return (
     <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? 'bg-gradient-to-br from-slate-800 to-slate-700 text-white relative overflow-hidden' : 'bg-gradient-to-br from-slate-50 to-slate-100'}`}>
       {/* Background Pattern for Dark Mode */}
@@ -400,11 +523,15 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
               ))}
             </div>
 
-            {/* Dark Mode Toggle */}
-            <div className="hidden md:block ml-8">
+            {/* Dark Mode Toggle + Stats Link */}
+            <div className="hidden md:flex items-center gap-3 ml-8">
+              <Link href="/stats" className={`text-sm font-medium transition-colors ${isDarkMode ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-blue-600'}`} aria-label="Open Stats">
+                Stats
+              </Link>
               <button
                 onClick={toggleDarkMode}
                 className={`p-2 rounded-lg transition-colors ${isDarkMode ? 'bg-slate-700 text-yellow-400 hover:bg-slate-600' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                aria-label="Toggle dark mode"
               >
                 {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
               </button>
@@ -437,9 +564,11 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
                   </button>
                 ))}
                 <div className="px-3 py-2">
+                  <Link href="/stats" className={`block px-3 py-2 text-base font-medium transition-colors ${isDarkMode ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-blue-600'}`} aria-label="Open Stats">Stats</Link>
                   <button
                     onClick={toggleDarkMode}
                     className={`p-2 rounded-lg transition-colors ${isDarkMode ? 'bg-slate-700 text-yellow-400 hover:bg-slate-600' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                    aria-label="Toggle dark mode"
                   >
                     {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
                   </button>
@@ -511,7 +640,7 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
                 </Button>
               </div>
               
-              <a href="/CV.pdf" download="Ahmed_Marwan_CV.pdf" className="mt-2">
+              <a href="https://drive.google.com/uc?export=download&id=1hiT4JLA5-3IwTekEH1Li0BfZwKsf9_SL" target="_blank" rel="noopener noreferrer" className="mt-2">
                 <Button 
                   size="lg" 
                   className="flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg"
@@ -531,6 +660,10 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
           </div>
         </div>
       </section>
+
+      
+      
+      
 
       {/* About Section */}
       <section id="about" className={`py-20 transition-colors duration-300 ${isDarkMode ? 'bg-slate-700/50' : 'bg-white'}`}>
@@ -898,6 +1031,67 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
               </CardContent>
             </Card>
           </div>
+        </div>
+      </section>
+
+      {/* Recommendation Letters Section */}
+      <section id="recommendations" className={`py-20 transition-colors duration-300 ${isDarkMode ? 'bg-slate-700/50' : 'bg-white'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className={`text-4xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>Recommendation Letters</h2>
+            <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} text-lg`}>Endorsements from academic advisors and industry supervisors</p>
+            <div className="w-24 h-1 bg-blue-600 mx-auto mt-6"></div>
+          </div>
+
+          {recommendationLetters.length === 0 ? (
+            <div className={`max-w-3xl mx-auto rounded-xl border text-center p-8 ${isDarkMode ? 'border-slate-600 bg-slate-700/50 text-white' : 'border-slate-200 bg-white'}`}>
+              <div className="flex flex-col items-center gap-4">
+                <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center">
+                  <BookOpen size={22} className="text-white" />
+                </div>
+                <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>No recommendation letters yet.</p>
+                <p className={`${isDarkMode ? 'text-slate-400' : 'text-slate-500'} text-sm`}>Add your PDFs or links to display them here.</p>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+              {recommendationLetters.map((letter) => (
+                <Card key={letter.title} className={`rounded-2xl border ${isDarkMode ? 'border-slate-600 bg-slate-800/60 text-white' : 'border-slate-200 bg-white'} shadow-sm hover:shadow-md transition-shadow`}>
+                  <CardHeader className="pb-2">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
+                          <BookOpen size={18} className="text-white" />
+                        </div>
+                        <div className="space-y-1">
+                          <CardTitle className="text-lg md:text-xl leading-tight">{letter.title}</CardTitle>
+                          <CardDescription className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} text-sm`}>{letter.issuer}</CardDescription>
+                        </div>
+                      </div>
+                      <Badge variant="outline" className="text-xs px-2 py-1">{letter.date}</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-4">
+                    <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-700'} text-sm leading-relaxed mb-6`}>{letter.summary}</p>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <Button asChild variant="outline" className={`${isDarkMode ? 'border-slate-500 text-white hover:bg-slate-700' : ''}`}>
+                        <a href={letter.viewUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${letter.title}`} className="flex items-center gap-2">
+                          <ExternalLink size={16} />
+                          View
+                        </a>
+                      </Button>
+                      <Button asChild className="bg-blue-600 hover:bg-blue-700">
+                        <a href={letter.downloadUrl} aria-label={`Download ${letter.title}`} className="flex items-center gap-2">
+                          <Download size={16} />
+                          Download
+                        </a>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
