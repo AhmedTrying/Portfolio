@@ -689,7 +689,7 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20">
+      <section id="skills" className="py-0 hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className={`text-4xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>Core Competencies</h2>
@@ -1553,6 +1553,186 @@ const displayedProjects = showAllProjects ? projects : flagshipProjects
           </div>
         </CardContent>
       </Card>
+    </div>
+
+    <div className="mt-20">
+      <div className="text-center mb-16">
+        <h2 className={`text-4xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>Core Competencies</h2>
+        <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
+      </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <Card className={`border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ${isDarkMode ? 'bg-slate-600/80 text-white hover:bg-slate-600' : 'bg-white'}`}>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Code className="text-blue-600" size={24} />
+              Programming Languages
+            </CardTitle>
+            <CardDescription>Core programming languages with strong proficiency</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-2">
+              {['C++', 'Python', 'JavaScript', 'PHP', 'Dart', 'HTML5', 'CSS3', 'TypeScript'].map((skill) => (
+                <Badge key={skill} variant="secondary">{skill}</Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className={`border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ${isDarkMode ? 'bg-slate-600/80 text-white hover:bg-slate-600' : 'bg-white'}`}>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Globe className="text-green-600" size={24} />
+              Frameworks & Libraries
+            </CardTitle>
+            <CardDescription>Modern frameworks for efficient development</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-2">
+              {['Next.js', 'React', 'Express.js', 'Flutter', 'Tailwind CSS', 'Node.js'].map((skill) => (
+                <Badge key={skill} variant="secondary">{skill}</Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className={`border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ${isDarkMode ? 'bg-slate-600/80 text-white hover:bg-slate-600' : 'bg-white'}`}>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Database className="text-purple-600" size={24} />
+              Databases
+            </CardTitle>
+            <CardDescription>Database design and management systems</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-2">
+              {['MongoDB', 'Firebase', 'MySQL', 'Real-time Databases'].map((skill) => (
+                <Badge key={skill} variant="secondary">{skill}</Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className={`border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ${isDarkMode ? 'bg-slate-600/80 text-white hover:bg-slate-600' : 'bg-white'}`}>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Network className="text-red-600" size={24} />
+              Backend & APIs
+            </CardTitle>
+            <CardDescription>Backend development and API design</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-2">
+              {['RESTful APIs', 'Server-side Development', 'Authentication', 'Microservices'].map((skill) => (
+                <Badge key={skill} variant="secondary">{skill}</Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className={`border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ${isDarkMode ? 'bg-slate-600/80 text-white hover:bg-slate-600' : 'bg-white'}`}>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Shield className="text-indigo-600" size={24} />
+              Tools & Technologies
+            </CardTitle>
+            <CardDescription>Development tools and productivity software</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-2">
+              {['Git', 'VS Code', 'Figma', 'Chrome DevTools', 'Postman', 'Vercel'].map((skill) => (
+                <Badge key={skill} variant="secondary">{skill}</Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="mt-16">
+        <div className="text-center mb-12">
+          <h3 className={`text-3xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>Networking & Security Expertise</h3>
+          <p className={`text-lg ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Specialized skills in network infrastructure and cybersecurity</p>
+          <div className="w-16 h-1 bg-red-500 mx-auto mt-4"></div>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <Card className={`border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ${isDarkMode ? 'bg-slate-600/80 text-white hover:bg-slate-600' : 'bg-white'}`}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Network className="text-blue-600" size={24} />
+                Network Infrastructure
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-wrap gap-2">
+                {['IPSec', 'VPN', 'SD-WAN', 'VLAN', 'ACLs', 'Subnetting'].map((skill) => (
+                  <Badge key={skill} variant="secondary">{skill}</Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className={`border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ${isDarkMode ? 'bg-slate-600/80 text-white hover:bg-slate-600' : 'bg-white'}`}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Shield className="text-red-600" size={24} />
+                Security Tools
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-wrap gap-2">
+                {['Fortinet', 'Zabbix', 'Virtual Access Routers', 'Packet Tracer'].map((skill) => (
+                  <Badge key={skill} variant="secondary">{skill}</Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className={`border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ${isDarkMode ? 'bg-slate-600/80 text-white hover:bg-slate-600' : 'bg-white'}`}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Globe className="text-green-600" size={24} />
+                Cloud & DevOps
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-wrap gap-2">
+                {['AWS', 'Azure', 'Docker', 'Linux', 'Bash Scripting'].map((skill) => (
+                  <Badge key={skill} variant="secondary">{skill}</Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      <div className="mt-16">
+        <div className="text-center mb-12">
+          <h3 className={`text-3xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>Areas of Interest</h3>
+          <p className={`text-lg ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>Fields I'm passionate about and actively exploring</p>
+          <div className="w-16 h-1 bg-green-500 mx-auto mt-4"></div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {[
+            'Artificial Intelligence',
+            'Cybersecurity',
+            'Data Science', 
+            'Web Development',
+            'Software Architecture',
+            'Cloud Computing',
+            'Machine Learning',
+            'DevOps',
+            'UI/UX Design',
+            'Blockchain Technology',
+            'Internet of Things (IoT)'
+          ].map((interest) => (
+            <div key={interest} className="bg-green-50 hover:bg-green-100 transition-colors duration-200 rounded-lg p-4 text-center border border-green-100">
+              <span className="text-slate-700 font-medium text-sm">{interest}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </div>
 </section>
