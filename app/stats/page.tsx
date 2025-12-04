@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Moon, Sun, RefreshCw, BarChart3, PieChart, ExternalLink } from 'lucide-react'
+import { Moon, Sun, RefreshCw, BarChart3, PieChart, ExternalLink, CheckCircle2 } from 'lucide-react'
 
 type PingResult = {
   name?: string
@@ -151,6 +151,10 @@ export default function StatsPage() {
               <Button aria-label="Refresh pings" variant="outline" onClick={fetchData} disabled={loading}>
                 <RefreshCw className={loading ? 'animate-spin' : ''} size={16} />
               </Button>
+              <Button aria-label="Check projects now" onClick={fetchData} disabled={loading}>
+                <CheckCircle2 size={16} />
+                <span className="ml-2">Check Now</span>
+              </Button>
             </div>
           </div>
 
@@ -284,4 +288,3 @@ export default function StatsPage() {
     </div>
   )
 }
-
